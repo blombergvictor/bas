@@ -47,6 +47,22 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('build/assets/css'));
 });
 
+
+gulp.task('sass', function () {
+    gulp.src('source/sass/7-unique/*.sass')
+        .pipe(plumber())
+        .pipe(sass({
+            style: 'compressed'
+        }))
+        .pipe(rename({
+            basename: 'how-it-works',
+            suffix: '.min'
+        }))
+        .pipe(gulp.dest('build/assets/css/unique'));
+});
+
+
+
 gulp.task('images', function() {
     gulp.src('source/img/*')
         .pipe(images())
